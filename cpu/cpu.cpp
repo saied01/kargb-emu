@@ -2,11 +2,21 @@
 // #include "register_file.h"
 #include <cstdint>
 
-CPU::CPU(int a)
+CPU::CPU() : PC(0), SP(0)
 {
 }
 
-uint8_t block_0_inst(uint8_t op1, uint8_t op2)
+void CPU::update_pc(uint16_t v)
+{
+  this->PC += v;
+}
+
+uint8_t CPU::block_1_inst(uint8_t op1, uint8_t op2)
+{
+  return 1;
+}
+
+uint8_t CPU::block_0_inst(uint8_t op1, uint8_t op2)
 {
   return 1;
 }
@@ -21,5 +31,7 @@ void CPU::decode_and_execute(uint8_t opcode)
   {
   case 0:
     block_0_inst(v1, v2);
+  case 1:
+    block_1_inst(v1, v2);
   }
 }

@@ -1,6 +1,0 @@
-CPU
-  info:
-    Pierce oscillator frequency: 4.194304 MHz (= 222 MHz = 4 MiHz)
-    Register file (struct hecha, ver si se agrega algo luego).
-    Instructions.cpp -> Implementar algun tipo de clase/struct que emule una instruccion y luego decodificar 10 de las instrucciones mas importantes (para empezar).
-Memory
