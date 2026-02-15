@@ -6,21 +6,6 @@ CPU::CPU() : PC(0), SP(0)
 {
 }
 
-void CPU::update_pc(uint16_t v)
-{
-  this->PC += v;
-}
-
-uint8_t CPU::block_1_inst(uint8_t op1, uint8_t op2)
-{
-  return 1;
-}
-
-uint8_t CPU::block_0_inst(uint8_t op1, uint8_t op2)
-{
-  return 1;
-}
-
 void CPU::decode_and_execute(uint8_t opcode)
 {
   uint8_t block = (opcode & 0xC0) >> 6; // 0xC0 = 11000000
@@ -30,8 +15,16 @@ void CPU::decode_and_execute(uint8_t opcode)
   switch (block)
   {
   case 0:
-    block_0_inst(v1, v2);
+    decode_block_0(v1, v2);
+    break;
   case 1:
-    block_1_inst(v1, v2);
+    decode_block_1(v1, v2);
+    break;
+  case 2:
+    decode_block_2(v1, v2);
+    break;
+  case 3:
+    decode_block_3(v1, v2);
+    break;
   }
 }

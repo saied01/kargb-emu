@@ -20,6 +20,8 @@ std::vector<uint8_t> load_rom(char *dir)
 
 int main(int argc, char **argv)
 {
+  if (argc != 2)
+    return 1;
   CPU cpu;
   std::vector<uint8_t> rom = load_rom(argv[1]);
 
