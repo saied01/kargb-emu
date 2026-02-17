@@ -2,13 +2,13 @@
 #include "instructions.h"
 
 void x0z0_inst(uint8_t op1);
-uint8_t x0z1_inst(uint8_t op1);
-uint8_t x0z2_inst(uint8_t op1);
-uint8_t x0z3_inst(uint8_t op1);
-uint8_t x0z4_inst(uint8_t op1);
-uint8_t x0z5_inst(uint8_t op1);
-uint8_t x0z6_inst(uint8_t op1);
-uint8_t x0z7_inst(uint8_t op1);
+void x0z1_inst(uint8_t op1);
+void x0z2_inst(uint8_t op1);
+void x0z3_inst(uint8_t op1);
+void x0z4_inst(uint8_t op1);
+void x0z5_inst(uint8_t op1);
+void x0z6_inst(uint8_t op1);
+void x0z7_inst(uint8_t op1);
 
 void CPU::decode_block_0(uint8_t op1, uint8_t op2)
 {

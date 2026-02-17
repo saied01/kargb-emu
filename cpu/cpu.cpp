@@ -2,7 +2,7 @@
 // #include "register_file.h"
 #include <cstdint>
 
-CPU::CPU() : PC(0), SP(0)
+CPU::CPU() : af(a, f), bc(b, c), de(d, e), hl(h, l)
 {
 }
 

@@ -8,13 +8,10 @@ class CPU
 {
 public:
   CPU();
-  clock_t clock;
-  register_file_t regs;
 
   auto tick();
 
   void decode_and_execute(uint8_t opcode);
-  void update_pc(uint16_t);
 
   // BLOCKS
   void decode_block_0(uint8_t op1, uint8_t op2);
@@ -23,7 +20,8 @@ public:
   void decode_block_3(uint8_t op1, uint8_t op2);
 
 private:
-  uint16_t PC;
-  uint16_t SP;
-  // TODO: modelar memoria y agregarla como valor del CPU
+  clock_t clock;
+  Byte_register a, b, c, d, e, h, l, f;
+  Word_register PC, SP;
+  Pair_register af, bc, de, hl;
 };

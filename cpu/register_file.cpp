@@ -1,16 +1,25 @@
 #include "register_file.h"
-#include "cpu.h"
-#include <stdint.h>
+// clang-format off
 
-// TODO: define af(), set_af(), etc...
+/* 8 BIT REGISTERS */
+void Byte_register::set(uint8_t val) { this->val = val; }
+void Byte_register::reset() { this->val = 0x0; }
+uint8_t Byte_register::value() const { return this->val; }
+void Byte_register::increment() { this->val++; }
+void Byte_register::decrement() { this->val--; }
 
-int nop(void)
+bool Byte_register::check_bit(uint8_t bit) const
 {
-  return 1;
+  return val & (1 << bit);
 }
 
-int ld(CPU &cpu, uint8_t opcode)
+void Byte_register::set_bit(uint8_t bit, bool set)
 {
-  cpu.decode_and_execute(opcode);
-  return 1;
+  if (set)
+    val |= (1 << bit);
+  else
+    val &= ~(1 << bit);
 }
+
+
+/* 16 BIT REGISTERS */

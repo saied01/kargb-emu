@@ -1,23 +1,38 @@
 #pragma once
 
+#include <cstdint>
 #include <stdint.h>
 
-typedef struct register_file
+class Byte_register
 {
-  uint8_t a, f;
-  uint8_t b, c;
-  uint8_t d, e;
-  uint8_t h, l;
+public:
+  Byte_register() = default;
 
-  uint16_t af() const;
-  void set_af(uint16_t);
+  virtual void set(uint8_t new_value);
+  void reset();
+  uint8_t value() const;
 
-  uint16_t bc() const;
-  void set_bc(uint16_t);
+  bool check_bit(uint8_t bit) const;
+  void set_bit(uint8_t bit, bool set);
 
-  uint16_t de() const;
-  void set_de(uint16_t);
+  void increment();
+  void decrement();
 
-  uint16_t hl() const;
-  void set_hl(uint16_t);
-} register_file_t;
+  auto operator==(uint8_t other) const -> bool;
+
+private:
+  uint8_t val = 0x0;
+};
+
+class Word_register
+{
+public:
+  Word_register() = default;
+  virtual ~Word_register() = default;
+};
+
+class Pair_register : public Word_register
+{
+public:
+  Pair_register(const Byte_register &high, const Byte_register &low);
+};
