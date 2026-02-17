@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../gameboy/gameboy.h"
 #include "register_file.h"
 #include <cstdint>
 #include <ctime>
@@ -7,9 +8,11 @@
 class CPU
 {
 public:
-  CPU();
+  CPU(Gameboy &gb);
 
   auto tick();
+
+  void init_PC(bool skip_bootrom);
 
   void decode_and_execute(uint8_t opcode);
 
@@ -20,6 +23,7 @@ public:
   void decode_block_3(uint8_t op1, uint8_t op2);
 
 private:
+  Gameboy &gb;
   clock_t clock;
   Byte_register a, b, c, d, e, h, l, f;
   Word_register PC, SP;

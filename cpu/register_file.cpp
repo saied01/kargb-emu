@@ -1,4 +1,5 @@
 #include "register_file.h"
+#include <cstdint>
 // clang-format off
 
 /* 8 BIT REGISTERS */
@@ -23,3 +24,12 @@ void Byte_register::set_bit(uint8_t bit, bool set)
 
 
 /* 16 BIT REGISTERS */
+
+void Word_register::set(uint16_t value) { val = value; }
+
+/* PAIR REGISTERS */
+
+Pair_register::Pair_register(Byte_register &inHigh, Byte_register &inLow) :
+  high(inHigh),
+  low(inLow) 
+{}

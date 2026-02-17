@@ -29,10 +29,19 @@ class Word_register
 public:
   Word_register() = default;
   virtual ~Word_register() = default;
+
+  virtual void set(uint16_t new_value);
+
+private:
+  uint16_t val = 0x0;
 };
 
 class Pair_register : public Word_register
 {
 public:
-  Pair_register(const Byte_register &high, const Byte_register &low);
+  Pair_register(Byte_register &inHigh, Byte_register &inLow);
+
+private:
+  Byte_register &high;
+  Byte_register &low;
 };

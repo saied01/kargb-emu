@@ -1,9 +1,25 @@
 #include "cpu.h"
-// #include "register_file.h"
 #include <cstdint>
 
-CPU::CPU() : af(a, f), bc(b, c), de(d, e), hl(h, l)
+CPU::CPU(Gameboy &gb)
+    : gb(gb)
+    , af(a, f)
+    , bc(b, c)
+    , de(d, e)
+    , hl(h, l)
 {
+}
+
+auto CPU::tick()
+{
+}
+
+void CPU::init_PC(bool skip_bootrom)
+{
+  if (skip_bootrom)
+    this->PC.set(0x0100);
+  else
+    this->PC.set(0x0000);
 }
 
 void CPU::decode_and_execute(uint8_t opcode)
