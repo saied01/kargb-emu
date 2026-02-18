@@ -9,14 +9,14 @@ int main(int argc, char **argv)
 
   Gameboy gb;
   CPU cpu(gb);
-  MMU mmu;
+  MMU mmu(gb);
 
   gb.load_rom(argv[1]);
   cpu.init_PC(true);
 
   while (1)
   {
-    // cpu.tick();
+    cpu.tick();
   }
 
   return 0;

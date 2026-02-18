@@ -1,47 +1,41 @@
 #include "cpu.h"
 #include "instructions.h"
+#include <cstdint>
 
-void x0z0_inst(uint8_t op1);
-void x0z1_inst(uint8_t op1);
-void x0z2_inst(uint8_t op1);
-void x0z3_inst(uint8_t op1);
-void x0z4_inst(uint8_t op1);
-void x0z5_inst(uint8_t op1);
-void x0z6_inst(uint8_t op1);
-void x0z7_inst(uint8_t op1);
+uint8_t x0z0_inst(uint8_t op1);
+uint8_t x0z1_inst(uint8_t op1);
+uint8_t x0z2_inst(uint8_t op1);
+uint8_t x0z3_inst(uint8_t op1);
+uint8_t x0z4_inst(uint8_t op1);
+uint8_t x0z5_inst(uint8_t op1);
+uint8_t x0z6_inst(uint8_t op1);
+uint8_t x0z7_inst(uint8_t op1);
 
-void CPU::decode_block_0(uint8_t op1, uint8_t op2)
+uint8_t CPU::decode_block_0(uint8_t op1, uint8_t op2)
 {
   switch (op2)
   {
   case 0:
-    x0z0_inst(op1);
-    break;
+    return x0z0_inst(op1);
   case 1:
-    x0z1_inst(op1);
-    break;
+    return x0z1_inst(op1);
   case 2:
-    x0z2_inst(op1);
-    break;
+    return x0z2_inst(op1);
   case 3:
-    x0z3_inst(op1);
-    break;
+    return x0z3_inst(op1);
   case 4:
-    x0z4_inst(op1);
-    break;
+    return x0z4_inst(op1);
   case 5:
-    x0z5_inst(op1);
-    break;
+    return x0z5_inst(op1);
   case 6:
-    x0z6_inst(op1);
-    break;
+    return x0z6_inst(op1);
   case 7:
-    x0z7_inst(op1);
-    break;
+    return x0z7_inst(op1);
   }
+  return 1;
 }
 
-void x0z0_inst(uint8_t op)
+uint8_t x0z0_inst(uint8_t op)
 {
   switch (op)
   {
@@ -60,4 +54,5 @@ void x0z0_inst(uint8_t op)
   default:
     jr_cc_d(op);
   }
+  return 1;
 }

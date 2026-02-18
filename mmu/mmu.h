@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../gameboy/gameboy.h"
 #include <cstdint>
 #include <fstream>
 #include <ios>
@@ -10,13 +11,11 @@
 class MMU
 {
 public:
-  MMU() = default;
+  MMU(Gameboy &gb);
 
-  uint8_t read_addr_8();
-  uint8_t write_addr_8();
-
-  uint16_t read_addr_16();
-  uint16_t write_addr_16();
+  auto read(const uint8_t) const -> uint8_t;
+  void write(const uint8_t addr, uint8_t byte);
 
 private:
+  Gameboy &gb;
 };

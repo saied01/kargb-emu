@@ -27,9 +27,13 @@ void Byte_register::set_bit(uint8_t bit, bool set)
 
 void Word_register::set(uint16_t value) { val = value; }
 
+void Word_register::increment() { this->val++; }
+void Word_register::decrement() { this->val--; }
+
 /* PAIR REGISTERS */
 
 Pair_register::Pair_register(Byte_register &inHigh, Byte_register &inLow) :
   high(inHigh),
   low(inLow) 
 {}
+

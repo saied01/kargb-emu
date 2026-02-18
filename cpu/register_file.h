@@ -30,7 +30,11 @@ public:
   Word_register() = default;
   virtual ~Word_register() = default;
 
+  uint16_t value();
   virtual void set(uint16_t new_value);
+
+  void increment();
+  void decrement();
 
 private:
   uint16_t val = 0x0;

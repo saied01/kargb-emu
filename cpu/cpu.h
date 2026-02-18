@@ -10,17 +10,17 @@ class CPU
 public:
   CPU(Gameboy &gb);
 
-  auto tick();
+  uint8_t tick();
 
   void init_PC(bool skip_bootrom);
 
-  void decode_and_execute(uint8_t opcode);
+  uint8_t decode_and_execute(uint8_t opcode);
 
   // BLOCKS
-  void decode_block_0(uint8_t op1, uint8_t op2);
-  void decode_block_1(uint8_t op1, uint8_t op2);
-  void decode_block_2(uint8_t op1, uint8_t op2);
-  void decode_block_3(uint8_t op1, uint8_t op2);
+  uint8_t decode_block_0(uint8_t op1, uint8_t op2);
+  uint8_t decode_block_1(uint8_t op1, uint8_t op2);
+  uint8_t decode_block_2(uint8_t op1, uint8_t op2);
+  uint8_t decode_block_3(uint8_t op1, uint8_t op2);
 
 private:
   Gameboy &gb;

@@ -1,4 +1,5 @@
 #include "gameboy.h"
+#include <cstdint>
 #include <fstream>
 #include <ios>
 #include <iostream>
@@ -16,4 +17,9 @@ void Gameboy::load_rom(char *dir)
   game.close();
 
   this->rom = rom;
+}
+
+uint8_t Gameboy::fetch_instruction(uint8_t addr)
+{
+  return rom[addr];
 }

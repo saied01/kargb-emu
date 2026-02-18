@@ -1,7 +1,8 @@
 #include "cpu.h"
+#include <cstdint>
 #include <stdint.h>
 
-void CPU::decode_block_3(uint8_t op1, uint8_t op2)
+uint8_t CPU::decode_block_3(uint8_t op1, uint8_t op2)
 {
   switch (op2)
   {
@@ -22,4 +23,5 @@ void CPU::decode_block_3(uint8_t op1, uint8_t op2)
   case 7:
     break;
   }
+  return 0;
 }
